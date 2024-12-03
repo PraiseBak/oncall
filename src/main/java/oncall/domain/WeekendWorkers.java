@@ -1,4 +1,7 @@
 package oncall.domain;
 
-public class WeekendWorkers {
+public class WeekendWorkers extends Workers {
+    public WeekendWorkers(String input) {
+        super(input);
+    }
 }

@@ -12,4 +12,16 @@ public class OnCallController {
     public void initStartDay(String s) {
         onCallService.initStartDay(s);
     }
+
+    public void initWeekendWorkers(String s) {
+        onCallService.initWeekendDayWorkers(s);
+    }
+
+    public void initNormalDayWorkers(String s) {
+        onCallService.initNormalDayWorkers(s);
+    }
+
+    public String calculateWorkersSchedule() {
+        return "";
+    }
 }
