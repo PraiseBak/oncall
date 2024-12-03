@@ -13,6 +13,7 @@ public class Workers {
     private static final int NICKNAME_MAX = 5;
     private static final String NICKNAME_LENGTH_ERROR = "닉네임은 1글자이상 최대 5글자이하여야합니다.";
     private final List<String> workersList;
+    private int curIdx = 0;
 
     public Workers(String input) {
         validateWorker(input);
@@ -47,5 +48,11 @@ public class Workers {
 
     public List<String> getWorkersList() {
         return workersList;
+    }
+
+    public String getWorker() {
+        String s = getWorkersList().get(curIdx);
+        curIdx = (curIdx+1) % getWorkersList().size();
+        return s;
     }
 }

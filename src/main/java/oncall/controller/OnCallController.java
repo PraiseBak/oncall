@@ -22,6 +22,6 @@ public class OnCallController {
     }
 
     public String calculateWorkersSchedule() {
-        return "";
+        return onCallService.calculateWorkersSchedule();
     }
 }

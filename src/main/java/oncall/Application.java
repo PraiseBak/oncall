@@ -19,7 +19,6 @@ public class Application {
         inputStartDay();
         inputNormalDayWorkers();
         inputWeekendDayWorkers();
-        printWorkersSchedule();
     }
 
     private static void printWorkersSchedule() {
@@ -32,9 +31,10 @@ public class Application {
             try{
                 String s = InputView.inputWeekendDayWorkers();
                 oncallController.initWeekendWorkers(s);
+                printWorkersSchedule();
                 return;
             }catch (IllegalArgumentException e){
-                throw new OnCallException(e.getMessage());
+                OutputView.printError(e.getMessage());
             }
         }
     }
@@ -46,7 +46,7 @@ public class Application {
                 oncallController.initNormalDayWorkers(s);
                 return;
             }catch (IllegalArgumentException e){
-                throw new OnCallException(e.getMessage());
+                OutputView.printError(e.getMessage());
             }
         }
     }
@@ -58,7 +58,7 @@ public class Application {
                 oncallController.initStartDay(s);
                 return;
             }catch (IllegalArgumentException e){
-                throw new OnCallException(e.getMessage());
+                OutputView.printError(e.getMessage());
             }
         }
     }

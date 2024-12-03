@@ -1,6 +1,9 @@
 package oncall.service;
 
+import java.util.List;
 import oncall.domain.OnCallManager;
+import oncall.dto.WorkerInfo;
+import oncall.repository.OnCallFormatter;
 import oncall.repository.OnCallRepository;
 
 public class OnCallService {
@@ -21,5 +24,13 @@ public class OnCallService {
 
     public void initWeekendDayWorkers(String s){
         onCallRepository.getOnCallManager().setWeekendDayWorker(s);
+    }
+
+    public String calculateWorkersSchedule() {
+        OnCallManager onCallManager = onCallRepository.getOnCallManager();
+        List<WorkerInfo> workerInfos = onCallManager.insertWorkers();
+        onCallManager.arrangeWorkers(workerInfos);
+        return OnCallFormatter.formattedWorkersInfo(workerInfos);
+
     }
 }

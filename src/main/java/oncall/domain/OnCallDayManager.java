@@ -6,7 +6,7 @@ import oncall.utility.NumberUtility;
 public class OnCallDayManager {
 
     private final String INVALID_INPUT = "유효하지 않은 입력 값입니다. 다시 입력해 주세요.";
-    private final DayOfWeek dayOfWeek;
+    private DayOfWeek dayOfWeek;
     private final Day day;
 
     public OnCallDayManager(String input) {
@@ -65,5 +65,29 @@ public class OnCallDayManager {
             }
         }
         return null;
+    }
+
+    public int getDayOfMonth() {
+        return day.day;
+    }
+
+    public int getMonth(){
+        return day.month;
+    }
+
+    public boolean isWeekend() {
+        return DayOfWeek.isWeekend(dayOfWeek);
+    }
+
+    public boolean isSpecialWeekend(int curDay){
+        return !isWeekend() && OffDay.isWeekend(day.month,curDay);
+    }
+
+    public void addDayOfWeekend(){
+        dayOfWeek = dayOfWeek.addDayOfWeek();
+    }
+
+    public DayOfWeek getDayOfWeek() {
+        return dayOfWeek;
     }
 }
